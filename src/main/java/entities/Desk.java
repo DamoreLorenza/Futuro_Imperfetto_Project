@@ -1,6 +1,7 @@
 package entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import enums.Reservation;
 import enums.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -17,12 +18,19 @@ import java.util.UUID;
 @Table(name = "table")
 @NoArgsConstructor
 public class Desk {
+    @Id
+    @GeneratedValue
+    @Column(name = "id_desk")
+    private UUID id;
 
     @Column(name = "table_number")
     private double tableNumber;
 
     @Column(name = "seats")
     private double seats;
+
+    @Enumerated(EnumType.STRING)
+    private Reservation reservation;
 
     @OneToMany
     @JoinColumn(name = "id_user")
