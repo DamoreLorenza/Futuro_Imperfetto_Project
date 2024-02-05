@@ -34,15 +34,18 @@ public class Event {
     @Column(name = "date")
     private LocalDate date;
 
+    @Column(name = "numero_partecipanti")
+    private double numeroPartecipanti;
+
     private String avatar;
 
-    @JoinColumn(name = "desk")
+    @ManyToOne
+    @JoinColumn(name = "desk_id")
     @JsonIgnore
     private Desk desk;
 
 
     @OneToMany(mappedBy = "event")
     private List<User> user;
-
 
 }
