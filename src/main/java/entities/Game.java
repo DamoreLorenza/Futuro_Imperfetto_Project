@@ -33,9 +33,8 @@ public class Game {
     @Column(name = "players")
     private Double players;
 
-    private String password;
-
     private String avatar;
+
     @Enumerated(EnumType.STRING)
     private Reservation reservation;
 
