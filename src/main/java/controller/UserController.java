@@ -1,6 +1,6 @@
 package controller;
 
-import Exceptions.BadRequestException;
+import exceptions.BadRequestException;
 import entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

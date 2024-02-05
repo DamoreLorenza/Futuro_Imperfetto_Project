@@ -1,6 +1,6 @@
 package service;
 
-import Exceptions.NotFoundException;
+import exceptions.NotFoundException;
 import entities.Game;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

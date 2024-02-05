@@ -1,8 +1,7 @@
 package service;
 
-import Exceptions.NotFoundException;
+import exceptions.NotFoundException;
 import entities.Event;
-import entities.Game;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -10,9 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import payloads.NewEventDTO;
-import payloads.NewGameDTO;
 import repositories.EventRepository;
-import repositories.GameRepository;
 
 import java.util.UUID;
 

@@ -1,7 +1,7 @@
 package service;
 
-import Exceptions.BadRequestException;
-import Exceptions.NotFoundException;
+import exceptions.BadRequestException;
+import exceptions.NotFoundException;
 import entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
