@@ -3,8 +3,10 @@ package service;
 import entities.User;
 import exceptions.UnauthorizedException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import payloads.UserLoginDTO;
+import security.JWTTools;
 
 @Service
 public class AuthService {
@@ -35,5 +37,3 @@ public class AuthService {
         }
     }
 
-
-}

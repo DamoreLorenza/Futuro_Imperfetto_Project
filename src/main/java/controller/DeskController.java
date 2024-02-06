@@ -60,11 +60,6 @@ public class DeskController {
             deskService.findByIdAndDelete(id);
         }
 
-        //Endpoint per upload immagini
-        //  @PostMapping("/{id}/upload")
-        // @PreAuthorize("hasAuthority('ADMIN')")
-        // public String uploadAvatar(@RequestParam("avatar") MultipartFile file, @PathVariable long id) throws IOException {
-        //    return userService.uploadPicture(file);
-        // }
+
     }
 

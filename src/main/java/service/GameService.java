@@ -1,5 +1,7 @@
 package service;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import exceptions.NotFoundException;
 import entities.Game;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +10,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import payloads.NewGameDTO;
 import repositories.GameRepository;
 
+import java.io.IOException;
 import java.util.UUID;
 
 @Service
@@ -21,6 +25,8 @@ public class GameService {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private Cloudinary cloudinaryUploader;
 
     public Page<Game> getGame(int page, int size, String orderBy) {
         if (size >= 100) size = 100;
@@ -57,5 +63,10 @@ public class GameService {
         found.setAvatar("https://ui-avatars.com/api/?name=" + found.getName());
         found.setReservation(body.reservation());
         return gameRepository.save(found);
+    }
+
+    public String uploadPicture(MultipartFile file) throws IOException {
+        String url = (String) cloudinaryUploader.uploader().upload(file.getBytes(), ObjectUtils.emptyMap()).get("url");
+        return url;
     }
 }

@@ -1,5 +1,6 @@
 package controller;
 
+import com.cloudinary.Cloudinary;
 import exceptions.BadRequestException;
 import entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +10,12 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import payloads.UserDTO;
 import payloads.UserResponseDTO;
 import service.UserService;
 
+import java.io.IOException;
 import java.util.UUID;
 
 @RestController
@@ -20,6 +23,7 @@ import java.util.UUID;
 public class UserController {
     @Autowired
     private UserService userService;
+
 
     @GetMapping
     public Page<User> getUsers(@RequestParam(defaultValue = "0") int page,
@@ -56,10 +60,10 @@ public class UserController {
         userService.findByIdAndDelete(id);
     }
 
-    //Endpoint per upload immagini
-  //  @PostMapping("/{id}/upload")
-   // @PreAuthorize("hasAuthority('ADMIN')")
-   // public String uploadAvatar(@RequestParam("avatar") MultipartFile file, @PathVariable long id) throws IOException {
-    //    return userService.uploadPicture(file);
-   // }
+
+     @PostMapping("/{id}/upload")
+     @PreAuthorize("hasAuthority('ADMIN')")
+     public String uploadAvatar(@RequestParam("avatar") MultipartFile file, @PathVariable UUID id) throws IOException {
+        return userService.uploadPicture(file);
+    }
 }

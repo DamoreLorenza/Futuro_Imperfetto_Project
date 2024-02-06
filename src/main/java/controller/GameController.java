@@ -9,11 +9,13 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import payloads.NewGameDTO;
 import payloads.NewGameResponseDTO;
 import service.GameService;
 import service.UserService;
 
+import java.io.IOException;
 import java.util.UUID;
 
 @RestController
@@ -65,6 +67,10 @@ public class GameController {
             gameService.findByIdAndDelete(gameId);
         }
 
-
+    @PostMapping("/{id}/upload")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public String uploadAvatar(@RequestParam("avatar") MultipartFile file, @PathVariable UUID id) throws IOException {
+        return gameService.uploadPicture(file);
+    }
 
 }
