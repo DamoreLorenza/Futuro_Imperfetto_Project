@@ -47,10 +47,8 @@ public class User {
     @JsonIgnore
     private Event event;
 
-    @ManyToOne
-    @JoinColumn(name = "table_number")
-    @JsonIgnore
+
+    @OneToOne
+    @JoinColumn(name = "tableNumber")
     private Desk desk;
-
-
 }

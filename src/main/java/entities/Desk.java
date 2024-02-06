@@ -33,11 +33,10 @@ public class Desk {
     @Enumerated(EnumType.STRING)
     private Reservation reservation;
 
-    @OneToMany
-    @JoinColumn(name = "id_user")
-    @JsonIgnore
-    private User user;
 
+    @OneToOne
+    @JoinColumn(name = "id_user")
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "id_game")
