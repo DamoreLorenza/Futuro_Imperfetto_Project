@@ -1,4 +1,6 @@
 package payloads;
 
-public record TableReservationResponseDTO() {
+import java.util.UUID;
+
+public record TableReservationResponseDTO(UUID id) {
 }

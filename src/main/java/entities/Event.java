@@ -44,6 +44,8 @@ public class Event {
     @JsonIgnore
     private Desk desk;
 
+    @OneToMany(mappedBy = "event")
+    private List<TableReservation> tableReservations;
 
     @OneToMany(mappedBy = "event")
     private List<User> user;

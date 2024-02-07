@@ -51,11 +51,12 @@ public class User {
     @JsonIgnore
     private Event event;
 
+    @OneToMany(mappedBy = "user")
+    private List<TableReservation> tableReservations;
 
-    @OneToOne
-    @JoinColumn(name = "tableNumber")
-    private Desk desk;
 
+    @OneToMany(mappedBy = "user")
+    private List<Desk> desks;
 
    // @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

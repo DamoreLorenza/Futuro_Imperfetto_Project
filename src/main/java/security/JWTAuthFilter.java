@@ -40,7 +40,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
 
 
             String id = jwtTools.extractIdFromToken(accessToken); // L'id è nel token quindi devo estrarlo da lì
-            User user = userService.findById(UUID.parseLong(id));
+            User user = userService.findById(UUID.fromString(id)); //parseLong
 
             // 3.2 Informo Spring Security che l'utente è autenticato (se non faccio questo passaggio continuerò ad avere 403 come risposte)
             Authentication authentication = new UsernamePasswordAuthenticationToken(user, null,user.getAuthorities());

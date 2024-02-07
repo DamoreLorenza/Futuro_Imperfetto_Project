@@ -16,7 +16,7 @@ import java.util.UUID;
 @Setter
 @ToString
 @Entity
-@Table(name = "table")
+@Table(name = "desk")
 @NoArgsConstructor
 public class Desk {
     @Id
@@ -38,12 +38,16 @@ public class Desk {
     @JoinColumn(name = "id_user")
     private User user;
 
+
     @ManyToOne
     @JoinColumn(name = "id_game")
     @JsonIgnore
     private Game game;
 
 
+    @OneToOne
+    @JoinColumn(name = "id_tableReservation")
+    private TableReservation tableReservation;
 
     @OneToMany(mappedBy = "desk")
     private List<Event> event;

@@ -41,6 +41,8 @@ public class Game {
     @OneToMany(mappedBy = "game")
     private List<Desk> desk;
 
-
+    @ManyToOne
+    @JoinColumn(name = "id_tableReservation")
+    private TableReservation tableReservation;
 
 }
