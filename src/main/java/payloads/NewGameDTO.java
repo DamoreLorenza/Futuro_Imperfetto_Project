@@ -1,19 +1,19 @@
 package payloads;
 
 import enums.Reservation;
+import jakarta.validation.constraints.NotNull;
 
 
 import java.util.UUID;
 
 public record NewGameDTO(
         UUID id,
-      //  @NotNull(message = "Nome obbligatorio")
+       @NotNull(message = "Nome obbligatorio")
         String name,
         String description,
-       // @NotNull(message = "Players")
+       @NotNull(message = "Players")
         Double players,
 
-       // @NotNull(message = "Stato fattura obbligatorio")
         Reservation reservation
 ) {
 }
