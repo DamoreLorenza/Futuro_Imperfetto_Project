@@ -42,14 +42,15 @@ public class User {
     private String password;
 
     private String avatar;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 
 
-    @ManyToOne
-    @JoinColumn(name = "id_event")
-    @JsonIgnore
-    private Event event;
+    //@ManyToOne
+    //@JoinColumn(name = "id_event")
+   // @JsonIgnore
+   // private Event event;
 
     @OneToMany(mappedBy = "user")
     private List<TableReservation> tableReservations;
