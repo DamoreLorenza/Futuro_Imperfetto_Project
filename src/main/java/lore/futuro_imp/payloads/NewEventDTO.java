@@ -11,7 +11,7 @@ public record NewEventDTO(
          @NotNull(message = "Nome obbligatorio")
         String name,
         String description,
-        @NotNull(message = "data")
+        @NotNull(message = "date")
         LocalDate date,
         double numeroPartecipanti
 

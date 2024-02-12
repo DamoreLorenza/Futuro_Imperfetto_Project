@@ -8,12 +8,15 @@ import org.springframework.stereotype.Repository;
 
 import java.awt.print.Pageable;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
 public interface GameRepository extends JpaRepository<Game, UUID> {
-    List<Game> findByReservation(Reservation reservation);
-    Page<Game> findById(Pageable pageable);
+   // List<Game> findByReservation(Reservation reservation);
+    Optional<Game> findById(UUID id);
 
-    Page<Game> findByName(Pageable pageable);
+  //  Page<Game> getGame(Pageable pageable);
+
+   // Page<Game> findByName(Pageable pageable);
 }

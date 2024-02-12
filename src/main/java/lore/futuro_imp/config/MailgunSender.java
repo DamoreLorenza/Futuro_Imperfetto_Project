@@ -1,5 +1,5 @@
 package lore.futuro_imp.config;
-
+/*
 import lore.futuro_imp.entities.User;
 import kong.unirest.HttpResponse;
 import kong.unirest.JsonNode;
@@ -29,3 +29,5 @@ public class MailgunSender {
                 .asJson();
     }
 }
+
+*/
