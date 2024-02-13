@@ -38,10 +38,10 @@ public class Event {
 
     private String avatar;
 
-    @ManyToOne
-    @JoinColumn(name = "desk_id")
-    @JsonIgnore
-    private Desk desk;
+   // @ManyToOne
+  //  @JoinColumn(name = "desk_id")
+  //  @JsonIgnore
+   // private Desk desk;
 
     @OneToMany(mappedBy = "event")
     private List<TableReservation> tableReservations;

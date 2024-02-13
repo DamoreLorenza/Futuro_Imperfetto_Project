@@ -56,8 +56,8 @@ public class User implements UserDetails {
     private List<TableReservation> tableReservations;
 
 
-    @OneToMany(mappedBy = "user")
-    private List<Desk> desks;
+ //   @OneToMany(mappedBy = "user")
+ //   private List<Desk> desks;
 
    // @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

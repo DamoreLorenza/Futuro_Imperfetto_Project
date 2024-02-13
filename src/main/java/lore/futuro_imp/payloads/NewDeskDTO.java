@@ -16,7 +16,7 @@ public record NewDeskDTO(
         Double tableNumber,
        @NotNull(message = "Il numero di posti è obbligatorio")
         @Min(value = 1, message = "Il numero dei posti deve essere maggiore di 0")
-        Double seats,
+        Integer seats,
         Reservation reservation,
 
         @NotEmpty(message = "inserire credenziali utente")

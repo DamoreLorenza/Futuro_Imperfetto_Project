@@ -27,28 +27,27 @@ public class Desk {
     private double tableNumber;
 
     @Column(name = "seats")
-    private double seats;
+    private int seats;
 
     @Enumerated(EnumType.STRING)
     private Reservation reservation;
 
 
-    @OneToOne
-    @JoinColumn(name = "id_user")
-    private User user;
+  //  @OneToOne
+  //  @JoinColumn(name = "id_user")
+  //  private User user;
 
 
-    @ManyToOne
-    @JoinColumn(name = "id_game")
-    @JsonIgnore
-    private Game game;
+  //  @ManyToOne
+  //  @JoinColumn(name = "id_game")
+  //  @JsonIgnore
+  //  private Game game;
 
-
-    @OneToOne
-    @JoinColumn(name = "id_tableReservation")
-    private TableReservation tableReservation;
 
     @OneToMany(mappedBy = "desk")
-    private List<Event> event;
+    private List<TableReservation> tableReservation;
+
+  //  @OneToMany(mappedBy = "desk")
+  //  private List<Event> event;
 
 }

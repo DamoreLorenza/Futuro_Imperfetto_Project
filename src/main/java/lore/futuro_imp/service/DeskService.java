@@ -37,7 +37,7 @@ public class DeskService {
             newDesk.setTableNumber(body.tableNumber());
             newDesk.setSeats(body.seats());
             newDesk.setReservation(body.reservation());
-            newDesk.setUser(body.user());
+         //   newDesk.setUser(body.user());
             return deskRepository.save(newDesk);
         }
 
@@ -55,7 +55,7 @@ public class DeskService {
             found.setTableNumber(body.getTableNumber());
             found.setSeats(body.getSeats());
             found.setReservation(body.getReservation());
-            found.setUser(body.getUser());
+          //  found.setUser(body.getUser());
             return deskRepository.save(found);
 
         }
