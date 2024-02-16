@@ -16,7 +16,7 @@ public interface GameRepository extends JpaRepository<Game, UUID> {
    // List<Game> findByReservation(Reservation reservation);
     Optional<Game> findById(UUID id);
 
-  //  Page<Game> getGame(Pageable pageable);
+    Page<Game> getGame(Pageable pageable);
 
    // Page<Game> findByName(Pageable pageable);
 }
