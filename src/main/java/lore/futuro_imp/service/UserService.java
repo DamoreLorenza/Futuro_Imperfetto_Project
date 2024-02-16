@@ -59,6 +59,10 @@ public class UserService {
     }
 
 
+    public User findUserIdByEmail(String email) {
+        return userRepository.findUserIdByEmail(email);
+    }
+
     //public User findByRole(Role role){
       //  return userRepository.findByRole(role).orElseThrow(()->new NotFoundException("Role non trovato"));
    // }

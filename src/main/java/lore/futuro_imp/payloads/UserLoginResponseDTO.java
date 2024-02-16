@@ -1,4 +1,6 @@
 package lore.futuro_imp.payloads;
 
-public record UserLoginResponseDTO(String token) {
+import lore.futuro_imp.entities.User;
+
+public record UserLoginResponseDTO(String token, User user) {
 }

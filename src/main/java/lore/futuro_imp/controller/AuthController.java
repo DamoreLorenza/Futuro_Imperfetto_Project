@@ -14,6 +14,8 @@ import lore.futuro_imp.payloads.UserLoginResponseDTO;
 import lore.futuro_imp.service.AuthService;
 import lore.futuro_imp.service.UserService;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -22,12 +24,20 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
+   // @PostMapping("/login")
+   // public UserLoginResponseDTO login(@RequestBody UserLoginDTO body) {
+     //   String accessToken = authService.authenticateUser(body);
+     //   return new UserLoginResponseDTO(accessToken);
+  //  }
+
     @PostMapping("/login")
     public UserLoginResponseDTO login(@RequestBody UserLoginDTO body) {
         String accessToken = authService.authenticateUser(body);
-        return new UserLoginResponseDTO(accessToken);
+        // Recupera l'ID dell'utente utilizzando il servizio appropriato
+        User user = userService.findUserIdByEmail(body.email());  //.email
+        // Restituisci il UserLoginResponseDTO con il token e le informazioni sull'utente
+        return new UserLoginResponseDTO(accessToken, user);
     }
-
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseDTO createUser(@RequestBody @Validated UserDTO newUserPayload, BindingResult validation) {
