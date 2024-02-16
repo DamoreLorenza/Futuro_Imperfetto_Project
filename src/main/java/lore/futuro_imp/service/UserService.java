@@ -2,6 +2,7 @@ package lore.futuro_imp.service;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import lore.futuro_imp.enums.Role;
 import lore.futuro_imp.exceptions.BadRequestException;
 import lore.futuro_imp.exceptions.NotFoundException;
 import lore.futuro_imp.entities.User;
@@ -57,6 +58,10 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(()->new NotFoundException(id));
     }
 
+
+    //public User findByRole(Role role){
+      //  return userRepository.findByRole(role).orElseThrow(()->new NotFoundException("Role non trovato"));
+   // }
     public void findByIdAndDelete(UUID id){
         User found = this.findById(id);
         userRepository.delete(found);

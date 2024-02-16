@@ -1,8 +1,8 @@
 package lore.futuro_imp.controller;
 
+import lore.futuro_imp.enums.Role;
 import lore.futuro_imp.exceptions.BadRequestException;
 import lore.futuro_imp.entities.User;
-import lore.futuro_imp.payloads.UserRoleResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -37,11 +37,17 @@ public class UserController {
         return userService.findById(id);
     }
 
-    @GetMapping("/{id}/id-and-role")
-    public UserRoleResponseDTO findIdAndRoleById(@PathVariable UUID id){
-        User user = userService.findById(id);
-        return new UserRoleResponseDTO(user.getId(), user.getRole());
-    }
+   // @GetMapping("/{id}/role")
+   // public User findByRoleId(@PathVariable Role role){
+   //     return userService.findByRole(role);
+   // }
+
+  //  @GetMapping("/{id}/id-and-role")
+    //public UserRoleResponseDTO findIdAndRoleById(@PathVariable UUID id){
+      //  User user = userService.findById(id);
+        //return new UserRoleResponseDTO(user.getId(), user.getRole());
+   // }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAuthority('ADMIN')")
