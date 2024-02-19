@@ -25,6 +25,10 @@ public class TableReservation {
     @Column(name = "date")
     private LocalDate date;
 
+    @Column(name = "Time")
+    private LocalDate time;
+
+
     @ManyToOne
     @JoinColumn(name = "id_user")
     private User user;
