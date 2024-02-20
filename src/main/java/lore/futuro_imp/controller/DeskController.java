@@ -1,6 +1,7 @@
 package lore.futuro_imp.controller;
 
 import lore.futuro_imp.entities.Desk;
+import lore.futuro_imp.entities.Game;
 import lore.futuro_imp.exceptions.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -57,5 +58,13 @@ public class DeskController {
         }
 
 
+    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+    @GetMapping("/desk")
+    public Desk findDeskIdBySeats(@RequestParam Integer seats) {
+        // Esegui la logica per ottenere l'ID del gioco in base al nome del gioco
+        // Ad esempio, potresti chiamare un metodo del service
+        return deskService.findDeskIdBySeats(seats);
+
+    }
     }
 

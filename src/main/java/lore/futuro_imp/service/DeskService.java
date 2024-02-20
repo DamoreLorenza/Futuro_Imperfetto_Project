@@ -1,6 +1,7 @@
 package lore.futuro_imp.service;
 
 import lore.futuro_imp.entities.Desk;
+import lore.futuro_imp.entities.Game;
 import lore.futuro_imp.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -59,6 +60,12 @@ public class DeskService {
             return deskRepository.save(found);
 
         }
+
+
+
+    public Desk findDeskIdBySeats(Integer seats) {
+        return deskRepository.findDeskIdBySeats(seats).orElseThrow(() -> new NotFoundException("not found"));
+    }
 
   //  public Desk findByReservation(Reservation reservation) {
   //      return deskRepository.findByReservation(reservation).orElseThrow(() -> new NotFoundException("Prenotazione non trovata per " + reservation));
