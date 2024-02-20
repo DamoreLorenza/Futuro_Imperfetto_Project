@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.sql.Time;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -26,7 +28,7 @@ public class TableReservation {
     private LocalDate date;
 
     @Column(name = "Time")
-    private LocalDate time;
+    private Time time;
 
 
     @ManyToOne

@@ -24,10 +24,10 @@ public class Desk {
     private UUID id;
 
     @Column(name = "table_number")
-    private double tableNumber;
+    private Integer tableNumber;
 
     @Column(name = "seats")
-    private int seats;
+    private Integer seats;
 
     @Enumerated(EnumType.STRING)
     private Reservation reservation;

@@ -30,7 +30,7 @@ public class TableReservationService {
         newTableReservation.setId(body.id());
         newTableReservation.setDate(body.date());
         newTableReservation.setTime(body.time());
-        newTableReservation.setUser( body.user());
+        newTableReservation.setUser(body.user());
         newTableReservation.setDesk(body.desk());
         newTableReservation.setGame(body.game());
         newTableReservation.setEvent(body.event());
