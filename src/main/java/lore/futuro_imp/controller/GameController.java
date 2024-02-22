@@ -73,13 +73,13 @@ public class GameController {
         return gameService.uploadPicture(file);
     }
 
-    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
-    @GetMapping("/game")
-    public Game getGameId(@RequestParam String name) {
+ //   @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+   // @GetMapping("/game")
+  //  public Game getGameId(@RequestParam String name) {
         // Esegui la logica per ottenere l'ID del gioco in base al nome del gioco
         // Ad esempio, potresti chiamare un metodo del service
-        return gameService.findGameIdByName(name);
+    //    return gameService.findGameIdByName(name);
 
-    }
+    //}
 
 }

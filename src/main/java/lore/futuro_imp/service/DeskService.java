@@ -61,11 +61,18 @@ public class DeskService {
 
         }
 
-
-
-    public Desk findDeskIdBySeats(Integer seats) {
-        return deskRepository.findDeskIdBySeats(seats).orElseThrow(() -> new NotFoundException("not found"));
+    public Desk findBySeats(Integer seats){
+        return deskRepository.findBySeats(seats).orElseThrow(()->new NotFoundException("seats not found"));
     }
+
+
+
+   // public Integer findDeskIdBySeats(Integer seats) {
+     //   Desk found = this.findBySeats(seats);
+
+     //return found.getD
+
+   // }
 
   //  public Desk findByReservation(Reservation reservation) {
   //      return deskRepository.findByReservation(reservation).orElseThrow(() -> new NotFoundException("Prenotazione non trovata per " + reservation));

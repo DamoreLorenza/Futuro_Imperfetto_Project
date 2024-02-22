@@ -8,6 +8,7 @@ import lombok.ToString;
 
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.UUID;
 
 
@@ -28,7 +29,7 @@ public class TableReservation {
     private LocalDate date;
 
     @Column(name = "Time")
-    private Time time;
+    private LocalTime time;
 
 
     @ManyToOne
@@ -46,7 +47,6 @@ public class TableReservation {
     @OneToOne
     @JoinColumn(name = "id_game")
     private Game game;
-
 
 }
 

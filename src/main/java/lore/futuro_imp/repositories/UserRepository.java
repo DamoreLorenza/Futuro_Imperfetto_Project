@@ -13,7 +13,7 @@ import java.util.UUID;
 @Repository
 public interface UserRepository extends JpaRepository<User, UUID> {
 
-    Optional<User> findById(UUID uuid);
+    Optional<User> findById(UUID id);
 
     //Optional<User> findByRole(Role role);
    // @Query("SELECT u.role FROM User u WHERE u.id = :userId")

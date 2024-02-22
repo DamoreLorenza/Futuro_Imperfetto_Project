@@ -35,8 +35,9 @@ public class TableReservationController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
     public TableReservationResponseDTO createTableReservation(@RequestBody @Validated TableReservationDTO newTableReservationPayload, BindingResult validation){
+      //  System.out.println("Payload JSON ricevuto: " + newTableReservationPayload);
         if (validation.hasErrors()) {
             throw new BadRequestException(validation.getAllErrors().stream().map(err -> err.getDefaultMessage()).toList().toString());
         }

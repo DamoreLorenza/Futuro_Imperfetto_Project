@@ -9,5 +9,5 @@ import java.util.UUID;
 
 @Repository
 public interface TableReservationRepository extends JpaRepository<TableReservation, UUID> {
-    Optional<TableReservation> findById(UUID uuid);
+    Optional<TableReservation> findById(UUID id);
 }

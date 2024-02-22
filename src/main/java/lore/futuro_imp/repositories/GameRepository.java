@@ -15,7 +15,7 @@ import java.util.UUID;
 public interface GameRepository extends JpaRepository<Game, UUID> {
    // List<Game> findByReservation(Reservation reservation);
     Optional<Game> findById(UUID id);
-    Optional<Game> findGameIdByName(String  name);
+  //  Optional<Game> findGameIdByName(String  name);
 
    // Page<Game> getGame(Pageable pageable);
 

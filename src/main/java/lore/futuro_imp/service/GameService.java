@@ -39,9 +39,9 @@ public class GameService {
         return gameRepository.findById(id).orElseThrow(() -> new NotFoundException(id));
     }
 
-    public Game findGameIdByName(String name) {
-        return gameRepository.findGameIdByName(name).orElseThrow(() -> new NotFoundException(name));
-    }
+  //  public Game findGameIdByName(String name) {
+   // /    return gameRepository.findGameIdByName(name).orElseThrow(() -> new NotFoundException(name));
+  //  }
     public void findByIdAndDelete(UUID id) {
         Game found = this.findById(id);
         gameRepository.delete(found);
