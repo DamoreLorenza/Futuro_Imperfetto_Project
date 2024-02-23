@@ -43,7 +43,7 @@ public class Desk {
   //  @JsonIgnore
   //  private Game game;
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "desk")
     private List<TableReservation> tableReservation;
 

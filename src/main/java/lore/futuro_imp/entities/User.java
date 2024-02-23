@@ -1,5 +1,6 @@
 package lore.futuro_imp.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lore.futuro_imp.enums.Role;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
@@ -52,6 +53,7 @@ public class User implements UserDetails {
    // @JsonIgnore
    // private Event event;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<TableReservation> tableReservations;
 

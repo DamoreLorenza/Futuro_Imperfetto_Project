@@ -20,8 +20,8 @@ public record TableReservationDTO(
         LocalTime time,
         @NotNull(message = "User obbligatorio!")
         UUID idUser,
-        UUID idEvent,
-      //  UUID idGame,
+      //  UUID idEvent,
+        UUID idGame,
         @NotNull(message = "Tavolo obbligatorio!")
         UUID idDesk
 ) {

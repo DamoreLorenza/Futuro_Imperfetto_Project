@@ -1,5 +1,6 @@
 package lore.futuro_imp.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,6 +44,7 @@ public class TableReservation {
     @ManyToOne
     @JoinColumn(name = "id_event")
     private Event event;
+
 
     @OneToOne
     @JoinColumn(name = "id_game")

@@ -1,5 +1,6 @@
 package lore.futuro_imp.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lore.futuro_imp.enums.Reservation;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -40,6 +41,7 @@ public class Game {
   //  @OneToMany(mappedBy = "game")
   //  private List<Desk> desk;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "game")
     private List<TableReservation> tableReservation;
 
