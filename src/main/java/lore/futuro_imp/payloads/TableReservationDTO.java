@@ -19,10 +19,14 @@ public record TableReservationDTO(
         @NotNull(message = "Orario obbligatorio!")
         LocalTime time,
         @NotNull(message = "User obbligatorio!")
+        //     User user,
         UUID idUser,
+        //  Game game,
+
       //  UUID idEvent,
         UUID idGame,
         @NotNull(message = "Tavolo obbligatorio!")
-        UUID idDesk
+       UUID idDesk
+        //  Desk desk
 ) {
 }
