@@ -6,6 +6,7 @@ import lore.futuro_imp.entities.Event;
 import lore.futuro_imp.entities.Game;
 import lore.futuro_imp.entities.User;
 import jakarta.validation.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Time;
 import java.time.LocalDate;
@@ -15,6 +16,7 @@ import java.util.UUID;
 public record TableReservationDTO(
         UUID id,
         @NotNull(message = "Data obbligatoria!")
+        @DateTimeFormat(pattern = "dd MM yyyy")
         LocalDate date,
         @NotNull(message = "Orario obbligatorio!")
         LocalTime time,
