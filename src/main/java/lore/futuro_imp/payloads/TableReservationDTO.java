@@ -16,7 +16,7 @@ import java.util.UUID;
 public record TableReservationDTO(
         UUID id,
         @NotNull(message = "Data obbligatoria!")
-        @DateTimeFormat(pattern = "dd MM yyyy")
+        @DateTimeFormat(pattern = "yyyy MM dd")
         LocalDate date,
         @NotNull(message = "Orario obbligatorio!")
         LocalTime time,
