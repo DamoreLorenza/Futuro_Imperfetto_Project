@@ -18,11 +18,5 @@ public record NewDeskDTO(
         @Min(value = 1, message = "Il numero dei posti deve essere maggiore di 0")
         Integer seats,
         Reservation reservation
-
-      //  @NotEmpty(message = "inserire credenziali utente")
-       // User user,
-
-      //  Game game,
-      //  Event event
 ) {
 }

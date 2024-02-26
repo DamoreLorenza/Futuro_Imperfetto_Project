@@ -33,21 +33,17 @@ public class Desk {
     private Reservation reservation;
 
 
-  //  @OneToOne
-  //  @JoinColumn(name = "id_user")
-  //  private User user;
 
 
-  //  @ManyToOne
-  //  @JoinColumn(name = "id_game")
   //  @JsonIgnore
-  //  private Game game;
+  //  @OneToMany(mappedBy = "desk")
+  //  private List<TableReservation> tableReservation;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "desk")
-    private List<TableReservation> tableReservation;
+     @ManyToOne
+       @JoinColumn(name = "id_tableReservation")
+     private TableReservation tableReservation;
 
-  //  @OneToMany(mappedBy = "desk")
-  //  private List<Event> event;
+
 
 }

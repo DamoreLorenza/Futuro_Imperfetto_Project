@@ -10,6 +10,7 @@ import lombok.ToString;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -37,18 +38,35 @@ public class TableReservation {
     @JoinColumn(name = "id_user")
     private User user;
 
-    @OneToOne
-    @JoinColumn(name = "id_desk")
-    private Desk desk;
+  //  @OneToOne
+  //  @JoinColumn(name = "id_desk")
+  //  private Desk desk;
+
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+            name = "table_reservation_desk",
+            joinColumns = @JoinColumn(name = "table_reservation_id"),
+            inverseJoinColumns = @JoinColumn(name = "desk_id")
+    )
+    private List<Desk> desk;
 
     @ManyToOne
     @JoinColumn(name = "id_event")
     private Event event;
 
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+            name = "table_reservation_game",
+            joinColumns = @JoinColumn(name = "table_reservation_id"),
+            inverseJoinColumns = @JoinColumn(name = "game_id")
+    )
+    private List<Game> game;
 
-    @OneToOne
-    @JoinColumn(name = "id_game")
-    private Game game;
+//    @OneToOne
+//    @JoinColumn(name = "id_game")
+//    private Game game;
 
 }
 

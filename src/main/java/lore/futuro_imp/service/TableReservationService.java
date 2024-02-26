@@ -10,6 +10,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import lore.futuro_imp.payloads.TableReservationDTO;
 import lore.futuro_imp.repositories.TableReservationRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -34,20 +37,29 @@ public class TableReservationService {
     }
 
   public TableReservation save(TableReservationDTO body){
-        User user = userService.findById(body.idUser());
-        Desk desk = deskService.findById(body.idDesk());
-       Game game = gameService.findById(body.idGame());
-        //     Event event = eventService.findById(body.idEvent());
-        TableReservation newTableReservation = new TableReservation();
+      //  Desk desk = deskService.findById(body.idDesk());
+      // Game game = gameService.findById(body.idGame());
+      // Event event = eventService.findById(body.idEvent());
+
+      User user = userService.findById(body.idUser());
+
+      List<Desk> desk = new ArrayList<>();
+      desk.add(deskService.findById(body.idDesk()));
+
+      List<Game> game = new ArrayList<>();
+      game.add(gameService.findById(body.idGame()));
+
+      TableReservation newTableReservation = new TableReservation();
 
         newTableReservation.setId(body.id());
         newTableReservation.setDate(body.date());
         newTableReservation.setTime(body.time());
         newTableReservation.setUser(userService.findById(body.idUser()));
-        newTableReservation.setDesk(deskService.findById(body.idDesk()));
-       newTableReservation.setGame(gameService.findById(body.idGame()));
-        //   newTableReservation.setEvent(eventService.findById(body.idEvent()));
+        newTableReservation.setDesk(desk);
+        newTableReservation.setGame(game);
 
+        //   newTableReservation.setEvent(eventService.findById(body.idEvent()));
+        //   newTableReservation.setDesk(deskService.findById(body.idDesk()));
         return tableReservationRepository.save(newTableReservation);
     }
 
@@ -78,19 +90,32 @@ public class TableReservationService {
 
  public TableReservation findbyIdAndUpdate(UUID id, TableReservation body){
         User user = userService.findById(body.getUser().getId());
-        Desk desk = deskService.findById(body.getDesk().getId());
-      Game game = gameService.findById(body.getGame().getId());
-    //  Event event = eventService.findById(body.getEvent().getId());
+     List<Desk> desk = new ArrayList<>();
+     desk.add(deskService.findById(body.getId()));
+
+     List<Game> game = new ArrayList<>();
+     game.add(gameService.findById(body.getId()));
+       // Desk desk = deskService.findById(body.getDesk().getId());
+       //  Game game = gameService.findById(body.getGame().getId());
+       //  Event event = eventService.findById(body.getEvent().getId());
         TableReservation found = this.findById(id);
+        found.setDesk(body.getDesk());
+        found.setGame(body.getGame());
         found.setDate(body.getDate());
         found.setTime(body.getTime());
         found.setUser(userService.findById(body.getUser().getId()));
-        found.setDesk(deskService.findById(body.getDesk().getId()));
-        found.setGame(gameService.findById(body.getGame().getId()));
-    //   found.setEvent(eventService.findById(body.getEvent().getId()));
+       // found.setDesk(deskService.findById(body.getDesk().getId()));
+       //  found.setGame(gameService.findById(body.getGame().getId()));
+       //   found.setEvent(eventService.findById(body.getEvent().getId()));
         return tableReservationRepository.save(found);
 
     }
+
+    // Metodo per recuperare tutte le prenotazioni del tavolo
+    public List<TableReservation> getAllTableReservations() {
+        return tableReservationRepository.findAll();
+    }
+
 
       /*        public TableReservation findbyIdAndUpdate(UUID id, TableReservation body){
 

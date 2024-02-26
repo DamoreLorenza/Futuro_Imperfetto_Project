@@ -16,13 +16,14 @@ import java.util.UUID;
 public record TableReservationDTO(
         UUID id,
         @NotNull(message = "Data obbligatoria!")
-        @DateTimeFormat(pattern = "yyyy MM dd")
+        @DateTimeFormat(pattern = "yyyy-MM-dd")
         LocalDate date,
         @NotNull(message = "Orario obbligatorio!")
         LocalTime time,
         @NotNull(message = "User obbligatorio!")
         //     User user,
         UUID idUser,
+
         //  Game game,
 
       //  UUID idEvent,

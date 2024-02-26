@@ -42,7 +42,12 @@ public class Game {
   //  private List<Desk> desk;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "game")
-    private List<TableReservation> tableReservation;
+    @ManyToOne
+      @JoinColumn(name = "id_tableReservation")
+    private TableReservation tableReservation;
+
+  //  @JsonIgnore
+  //  @OneToMany(mappedBy = "game")
+  //  private List<TableReservation> tableReservation;
 
 }

@@ -1,5 +1,7 @@
 package lore.futuro_imp.controller;
 
+import lore.futuro_imp.entities.Desk;
+import lore.futuro_imp.entities.Game;
 import lore.futuro_imp.entities.TableReservation;
 import lore.futuro_imp.exceptions.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import lore.futuro_imp.payloads.TableReservationDTO;
 import lore.futuro_imp.payloads.TableReservationResponseDTO;
 import lore.futuro_imp.service.TableReservationService;
+
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -28,10 +32,29 @@ public class TableReservationController {
         return tableReservationService.getTableReservation(page, size, orderBy);
     }
 
+  //  @GetMapping("/{id}")
+  //  public TableReservation findById(@PathVariable UUID id){
+  //      return tableReservationService.findById(id);
+   // }
+
     @GetMapping("/{id}")
-    public TableReservation findById(@PathVariable UUID id){
-        return tableReservationService.findById(id);
+    public TableReservation findById(@PathVariable UUID id) {
+        TableReservation tableReservation = tableReservationService.findById(id);
+
+        // Carica i giochi associati alla tableReservation
+        List<Game> games = tableReservation.getGame();
+
+        // Carica le scrivanie associate alla tableReservation
+        List<Desk> desks = tableReservation.getDesk();
+
+        // Se necessario, caricare altre proprietà associate alla tableReservation
+
+        // Restituisci la tableReservation con i giochi e le scrivanie associati
+        return tableReservation;
+
     }
+
+
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
