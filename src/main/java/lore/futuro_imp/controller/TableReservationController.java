@@ -42,10 +42,10 @@ public class TableReservationController {
         TableReservation tableReservation = tableReservationService.findById(id);
 
         // Carica i giochi associati alla tableReservation
-        List<Game> games = tableReservation.getGame();
+        List<Game> game = tableReservation.getGame();
 
         // Carica le scrivanie associate alla tableReservation
-        List<Desk> desks = tableReservation.getDesk();
+        List<Desk> desk = tableReservation.getDesk();
 
         // Se necessario, caricare altre proprietà associate alla tableReservation
 
@@ -80,5 +80,7 @@ public class TableReservationController {
     public void findByIdAndDelete(@PathVariable UUID id){
         tableReservationService.findByIdAndDelete(id);
     }
+
+
 
 }
