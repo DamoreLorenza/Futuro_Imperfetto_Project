@@ -30,7 +30,7 @@ public class TableReservation {
     @Column(name = "date")
     private LocalDate date;
 
-    @Column(name = "Time")
+    @Column(name = "time")
     private LocalTime time;
 
 

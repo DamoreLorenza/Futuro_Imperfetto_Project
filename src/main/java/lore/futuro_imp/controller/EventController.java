@@ -31,7 +31,7 @@ public class EventController {
             return eventService.findById(eventId);
         }
 
-        @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+       @PreAuthorize("hasAnyAuthority('ADMIN','USER' ,'ROLE_ANONYMOUS')")
         @GetMapping
         public Page<Event> getEvent(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "10") int size,
