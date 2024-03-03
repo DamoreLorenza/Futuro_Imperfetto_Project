@@ -53,7 +53,7 @@ public class GameService {
         newGame.setName(body.name());
         newGame.setDescription(body.description());
         newGame.setPlayers(body.players());
-        newGame.setAvatar("https://ui-avatars.com/api/?name=" + newGame.getName());
+        newGame.setAvatar(body.avatar());
         newGame.setReservation(body.reservation());
         return gameRepository.save(newGame);
     }

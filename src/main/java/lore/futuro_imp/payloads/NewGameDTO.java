@@ -14,6 +14,7 @@ public record NewGameDTO(
        @NotNull(message = "Players")
         Double players,
 
-        Reservation reservation
+        Reservation reservation,
+        String avatar
 ) {
 }

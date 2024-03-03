@@ -1,5 +1,7 @@
 package lore.futuro_imp.service;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import lore.futuro_imp.exceptions.NotFoundException;
 import lore.futuro_imp.entities.Event;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import lore.futuro_imp.payloads.NewEventDTO;
 import lore.futuro_imp.repositories.EventRepository;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.UUID;
 
 @Service
@@ -21,6 +25,11 @@ public class EventService {
 
     @Autowired
     private UserService userService;
+
+
+    @Autowired
+    private Cloudinary cloudinaryUploader;
+
 
 
     public Page<Event> getEvent(int page, int size, String orderBy) {
@@ -45,7 +54,8 @@ public class EventService {
         newEvent.setName(body.name());
         newEvent.setDescription(body.description());
         newEvent.setDate(body.date());
-        newEvent.setAvatar("https://ui-avatars.com/api/?name=" + newEvent.getName());
+        newEvent.setAvatar(body.avatar());
+      //  newEvent.setAvatar("https://ui-avatars.com/api/?name=" + newEvent.getName());
         newEvent.setNumeroPartecipanti(body.numeroPartecipanti());
         return eventRepository.save(newEvent);
     }
@@ -58,5 +68,10 @@ public class EventService {
         found.setAvatar("https://ui-avatars.com/api/?name=" + found.getName());
         found.setNumeroPartecipanti(body.numeroPartecipanti());
         return eventRepository.save(found);
+    }
+
+    public String uploadPicture(MultipartFile file) throws IOException {
+        String url = (String) cloudinaryUploader.uploader().upload(file.getBytes(), ObjectUtils.emptyMap()).get("url");
+        return url;
     }
 }

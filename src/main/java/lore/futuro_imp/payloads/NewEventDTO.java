@@ -13,8 +13,8 @@ public record NewEventDTO(
         String description,
         @NotNull(message = "date")
         LocalDate date,
-        double numeroPartecipanti
+        double numeroPartecipanti,
 
-
+       String avatar
 ) {
 }

@@ -13,7 +13,9 @@ import lore.futuro_imp.payloads.NewEventDTO;
 import lore.futuro_imp.payloads.NewEventResponseDTO;
 import lore.futuro_imp.service.EventService;
 import lore.futuro_imp.service.UserService;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.UUID;
 @RestController
 @RequestMapping("/event")
@@ -65,6 +67,11 @@ public class EventController {
             eventService.findByIdAndDelete(eventId);
         }
 
+    @PostMapping("/{id}/upload")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public String uploadAvatar(@RequestParam("avatar") MultipartFile file, @PathVariable UUID id) throws IOException {
+        return eventService.uploadPicture(file);
+    }
 
 
     }
