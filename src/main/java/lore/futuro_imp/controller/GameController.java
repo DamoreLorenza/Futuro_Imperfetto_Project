@@ -27,13 +27,13 @@ public class GameController {
         @Autowired
         private UserService userService;
 
-       @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+     //  @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
         @GetMapping("/{gameId}")
         public Game getGameById(@PathVariable UUID gameId) {
             return gameService.findById(gameId);
         }
 
-       @PreAuthorize("hasAnyAuthority('ADMIN','USER' ,'ROLE_ANONYMOUS')")
+     //  @PreAuthorize("hasAnyAuthority('ADMIN','USER' ,'ROLE_ANONYMOUS')")
         @GetMapping
         public Page<Game> getGame(@RequestParam(defaultValue = "0") int page,
                                      @RequestParam(defaultValue = "10") int size,
