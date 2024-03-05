@@ -121,22 +121,5 @@ public class TableReservationService {
         );
     }
 
-  /*  public CombinedReservationDTO getCombinedReservationById(UUID reservationId) {
 
-        TableReservation tableReservation = tableReservationRepository.findById(reservationId)
-                .orElseThrow(() -> new NotFoundException("Prenotazione non trovata con ID: " + reservationId));
-
-        List<String> deskNames = tableReservation.getDesk().stream().map(Desk::getName).collect(Collectors.toList());
-        List<String> gameNames = tableReservation.getGame().stream().map(Game::getName).collect(Collectors.toList());
-
-        CombinedReservationDTO combinedReservationDTO = new CombinedReservationDTO();
-        combinedReservationDTO.setId(tableReservation.getId());
-        combinedReservationDTO.setDate(tableReservation.getDate());
-        combinedReservationDTO.setTime(tableReservation.getTime());
-        combinedReservationDTO.setIdUser(tableReservation.getUser().getId());
-        combinedReservationDTO.setDeskNames(deskNames);
-        combinedReservationDTO.setGameNames(gameNames);
-
-        return combinedReservationDTO;
-    }*/
        }
