@@ -32,20 +32,20 @@ public class TableReservationController {
         return tableReservationService.getTableReservation(page, size, orderBy);
     }
 
-  //  @GetMapping("/{id}")
-  //  public TableReservation findById(@PathVariable UUID id){
-  //      return tableReservationService.findById(id);
-   // }
-
+/*     @GetMapping("/{id}")
+    public TableReservation findById(@PathVariable UUID id){
+        return tableReservationService.findById(id);
+    }
+*/
     @GetMapping("/{id}")
     public TableReservation findById(@PathVariable UUID id) {
         TableReservation tableReservation = tableReservationService.findById(id);
 
         // Carica i giochi associati alla tableReservation
-        List<Game> game = tableReservation.getGame();
+       // List<Game> game = tableReservation.getGame();
 
         // Carica le scrivanie associate alla tableReservation
-        List<Desk> desk = tableReservation.getDesk();
+      //  List<Desk> desk = tableReservation.getDesk();
 
         // Se necessario, caricare altre proprietà associate alla tableReservation
 
@@ -82,5 +82,9 @@ public class TableReservationController {
     }
 
 
-
+  /*  @PostMapping("/updateDeskId")
+    public String updateDeskIdFromTableReservationDesk() {
+        tableReservationService.updateDeskIdFromTableReservationDesk();
+        return "Desk IDs updated successfully!";
+    }*/
 }

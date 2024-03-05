@@ -33,17 +33,20 @@ public class Desk {
     private Reservation reservation;
 
 
-
+    @JsonIgnore
+    @ManyToMany(mappedBy = "desk")
+    private List<TableReservation> tableReservation;
 
   //  @JsonIgnore
   //  @OneToMany(mappedBy = "desk")
   //  private List<TableReservation> tableReservation;
 
-    @JsonIgnore
-     @ManyToOne
-       @JoinColumn(name = "id_tableReservation")
-     private TableReservation tableReservation;
 
 
+ /*   @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "id_tableReservation")
+    private TableReservation tableReservation;
+*/
 
 }

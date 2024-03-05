@@ -63,13 +63,6 @@ public class DeskController {
         return deskService.findBySeats(seats);
     }
 
- //   @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
- //   @GetMapping("/seats/{seats}")
- //   public Desk findDeskIdBySeats(@PathVariable Integer seats) {
-        // Esegui la logica per ottenere l'ID del gioco in base al nome del gioco
-        // Ad esempio, potresti chiamare un metodo del service
- //       return deskService.findDeskIdBySeats(seats);
 
-  //  }
     }
 

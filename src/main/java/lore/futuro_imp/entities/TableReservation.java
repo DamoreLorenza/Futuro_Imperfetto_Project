@@ -34,13 +34,12 @@ public class TableReservation {
     private LocalTime time;
 
 
+
     @ManyToOne
     @JoinColumn(name = "id_user")
     private User user;
 
-  //  @OneToOne
-  //  @JoinColumn(name = "id_desk")
-  //  private Desk desk;
+
 
     @JsonIgnore
     @ManyToMany
@@ -50,6 +49,10 @@ public class TableReservation {
             inverseJoinColumns = @JoinColumn(name = "desk_id")
     )
     private List<Desk> desk;
+
+    public List<Desk> getDesk() {
+        return desk;
+    };
 
     @ManyToOne
     @JoinColumn(name = "id_event")
@@ -64,9 +67,25 @@ public class TableReservation {
     )
     private List<Game> game;
 
+
+    //  @OneToOne
+    //  @JoinColumn(name = "id_desk")
+    //  private Desk desk;
+
+
+ /*   @ManyToOne
+    @JoinColumn(name = "desk_id")
+    private Desk desk;
+
+    @ManyToOne
+    @JoinColumn(name = "game_id")
+    private Game game;
+*/
+
 //    @OneToOne
 //    @JoinColumn(name = "id_game")
 //    private Game game;
+
 
 }
 

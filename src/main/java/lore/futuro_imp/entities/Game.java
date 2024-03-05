@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -38,16 +40,18 @@ public class Game {
     @Enumerated(EnumType.STRING)
     private Reservation reservation;
 
-  //  @OneToMany(mappedBy = "game")
-  //  private List<Desk> desk;
+      @JsonIgnore
+      @ManyToMany(mappedBy = "game")
+      private List<TableReservation> tableReservation;
 
-    @JsonIgnore
+   /* @JsonIgnore
     @ManyToOne
       @JoinColumn(name = "id_tableReservation")
-    private TableReservation tableReservation;
+    private TableReservation tableReservation;*/
 
   //  @JsonIgnore
   //  @OneToMany(mappedBy = "game")
   //  private List<TableReservation> tableReservation;
+
 
 }
