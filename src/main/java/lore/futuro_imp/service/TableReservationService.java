@@ -14,6 +14,7 @@ import lore.futuro_imp.repositories.TableReservationRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class TableReservationService {
@@ -36,30 +37,7 @@ public class TableReservationService {
         return tableReservationRepository.findAll(pageable);
     }
 
- /* public TableReservation save(TableReservationDTO body){
-     //  Desk desk = deskService.findById(body.idDesk());
-     //  Game game = gameService.findById(body.idGame());
-       User user = userService.findById(body.idUser());
 
-      List<Desk> desk = new ArrayList<>();
-      desk.add(deskService.findById(body.idDesk()));
-
-      List<Game> game = new ArrayList<>();
-      game.add(gameService.findById(body.idGame()));
-
-      TableReservation newTableReservation = new TableReservation();
-
-        newTableReservation.setId(body.id());
-        newTableReservation.setDate(body.date());
-        newTableReservation.setTime(body.time());
-        newTableReservation.setUser(userService.findById(body.idUser()));
-        newTableReservation.setDesk(desk);
-        newTableReservation.setGame(game);
-      //  newTableReservation.setDesk(deskService.findById(body.idDesk()));
-      //  newTableReservation.setGame(gameService.findById(body.idGame()));
-        return tableReservationRepository.save(newTableReservation);
-    }
-*/
 
     public TableReservation save(TableReservationDTO body){
         User user = userService.findById(body.idUser());
@@ -121,8 +99,44 @@ public class TableReservationService {
     }
 
 
+    public TableReservationDTO findCompleteById(UUID id) {
+        TableReservation reservation = tableReservationRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Reservation not found with ID: " + id));
 
- /*   public void updateDeskIdFromTableReservationDesk() {
-        tableReservationRepository.updateDeskIdFromTableReservationDesk();
+        List<UUID> deskIds = reservation.getDesk().stream()
+                .map(Desk::getId)
+                .collect(Collectors.toList());
+
+        List<UUID> gameIds = reservation.getGame().stream()
+                .map(Game::getId)
+                .collect(Collectors.toList());
+
+        return new TableReservationDTO(
+                reservation.getId(),
+                reservation.getDate(),
+                reservation.getTime(),
+                reservation.getUser().getId(),
+                gameIds,
+                deskIds
+        );
+    }
+
+  /*  public CombinedReservationDTO getCombinedReservationById(UUID reservationId) {
+
+        TableReservation tableReservation = tableReservationRepository.findById(reservationId)
+                .orElseThrow(() -> new NotFoundException("Prenotazione non trovata con ID: " + reservationId));
+
+        List<String> deskNames = tableReservation.getDesk().stream().map(Desk::getName).collect(Collectors.toList());
+        List<String> gameNames = tableReservation.getGame().stream().map(Game::getName).collect(Collectors.toList());
+
+        CombinedReservationDTO combinedReservationDTO = new CombinedReservationDTO();
+        combinedReservationDTO.setId(tableReservation.getId());
+        combinedReservationDTO.setDate(tableReservation.getDate());
+        combinedReservationDTO.setTime(tableReservation.getTime());
+        combinedReservationDTO.setIdUser(tableReservation.getUser().getId());
+        combinedReservationDTO.setDeskNames(deskNames);
+        combinedReservationDTO.setGameNames(gameNames);
+
+        return combinedReservationDTO;
     }*/
        }

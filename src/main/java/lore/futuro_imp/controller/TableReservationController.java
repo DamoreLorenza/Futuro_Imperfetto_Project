@@ -1,7 +1,5 @@
 package lore.futuro_imp.controller;
 
-import lore.futuro_imp.entities.Desk;
-import lore.futuro_imp.entities.Game;
 import lore.futuro_imp.entities.TableReservation;
 import lore.futuro_imp.exceptions.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,6 @@ import lore.futuro_imp.payloads.TableReservationDTO;
 import lore.futuro_imp.payloads.TableReservationResponseDTO;
 import lore.futuro_imp.service.TableReservationService;
 
-import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -32,12 +29,12 @@ public class TableReservationController {
         return tableReservationService.getTableReservation(page, size, orderBy);
     }
 
-/*     @GetMapping("/{id}")
+    @GetMapping("/{id}")
     public TableReservation findById(@PathVariable UUID id){
         return tableReservationService.findById(id);
     }
-*/
-    @GetMapping("/{id}")
+
+  /*   @GetMapping("/{id}")
     public TableReservation findById(@PathVariable UUID id) {
         TableReservation tableReservation = tableReservationService.findById(id);
 
@@ -51,7 +48,7 @@ public class TableReservationController {
         // Restituisco la tableReservation con i giochi e i tavoli associati
         return tableReservation;
 
-    }
+    }*/
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
@@ -64,18 +61,6 @@ public class TableReservationController {
     }
 
 
-  /*  @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
-    public TableReservationResponseDTO createTableReservation(@RequestBody @Validated TableReservationDTO newTableReservationPayload, BindingResult validation){
-      //  System.out.println("Payload JSON ricevuto: " + newTableReservationPayload);
-        if (validation.hasErrors()) {
-            throw new BadRequestException(validation.getAllErrors().stream().map(err -> err.getDefaultMessage()).toList().toString());
-        }
-        TableReservation newTableReservation = tableReservationService.save(newTableReservationPayload);
-        return new TableReservationResponseDTO(newTableReservation.getId());
-
-    }*/
 
     @PutMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -91,9 +76,10 @@ public class TableReservationController {
     }
 
 
-  /*  @PostMapping("/updateDeskId")
-    public String updateDeskIdFromTableReservationDesk() {
-        tableReservationService.updateDeskIdFromTableReservationDesk();
-        return "Desk IDs updated successfully!";
-    }*/
+    @GetMapping("/{id}/complete")
+    public TableReservationDTO getCompleteTableReservation(@PathVariable UUID id) {
+        return tableReservationService.findCompleteById(id);
+    }
+
+
 }
