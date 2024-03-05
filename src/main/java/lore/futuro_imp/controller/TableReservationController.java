@@ -42,21 +42,29 @@ public class TableReservationController {
         TableReservation tableReservation = tableReservationService.findById(id);
 
         // Carica i giochi associati alla tableReservation
-       // List<Game> game = tableReservation.getGame();
+        List<Game> game = tableReservation.getGame();
 
-        // Carica le scrivanie associate alla tableReservation
-      //  List<Desk> desk = tableReservation.getDesk();
+        // Carica i tavoli associate alla tableReservation
+        List<Desk> desk = tableReservation.getDesk();
 
-        // Se necessario, caricare altre proprietà associate alla tableReservation
 
-        // Restituisci la tableReservation con i giochi e le scrivanie associati
+        // Restituisco la tableReservation con i giochi e i tavoli associati
         return tableReservation;
 
     }
-
-
-
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
+    public TableReservationResponseDTO createTableReservation(@RequestBody @Validated TableReservationDTO newTableReservationPayload, BindingResult validation){
+        if (validation.hasErrors()) {
+            throw new BadRequestException(validation.getAllErrors().stream().map(err -> err.getDefaultMessage()).toList().toString());
+        }
+        TableReservation newTableReservation = tableReservationService.save(newTableReservationPayload);
+        return new TableReservationResponseDTO(newTableReservation.getId());
+    }
+
+
+  /*  @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
     public TableReservationResponseDTO createTableReservation(@RequestBody @Validated TableReservationDTO newTableReservationPayload, BindingResult validation){
@@ -67,7 +75,8 @@ public class TableReservationController {
         TableReservation newTableReservation = tableReservationService.save(newTableReservationPayload);
         return new TableReservationResponseDTO(newTableReservation.getId());
 
-    }
+    }*/
+
     @PutMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public TableReservation findByIdAndUpdate(@PathVariable UUID id, @RequestBody TableReservation updateTableReservationPayload){

@@ -11,9 +11,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.UUID;
 
-public record TableReservationDTO(
+/*public record TableReservationDTO(
         UUID id,
         @NotNull(message = "Data obbligatoria!")
         @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -31,5 +32,21 @@ public record TableReservationDTO(
         @NotNull(message = "Tavolo obbligatorio!")
        UUID idDesk
         //  Desk desk
+) {
+}*/
+
+public record TableReservationDTO(
+        UUID id,
+        @NotNull(message = "Data obbligatoria!")
+        @DateTimeFormat(pattern = "yyyy-MM-dd")
+        LocalDate date,
+        @NotNull(message = "Orario obbligatorio!")
+        LocalTime time,
+        @NotNull(message = "User obbligatorio!")
+        UUID idUser,
+        @NotNull(message = "Giochi obbligatori!")
+        List<UUID> idGame,
+        @NotNull(message = "Tavoli obbligatori!")
+        List<UUID> idDesk
 ) {
 }

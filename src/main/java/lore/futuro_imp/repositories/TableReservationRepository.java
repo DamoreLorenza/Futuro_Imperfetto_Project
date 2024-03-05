@@ -23,7 +23,6 @@ public interface TableReservationRepository extends JpaRepository<TableReservati
     @Query("UPDATE TableReservation tr " +
             "SET tr.desk_id = (SELECT trd.desk_id FROM TableReservationDesk trd WHERE trd.tableReservationId = tr.idTableReservation)")
     void updateDeskIdFromTableReservationDesk();
-
 */
 
 }

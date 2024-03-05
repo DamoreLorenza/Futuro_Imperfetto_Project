@@ -36,7 +36,7 @@ public class TableReservationService {
         return tableReservationRepository.findAll(pageable);
     }
 
-  public TableReservation save(TableReservationDTO body){
+ /* public TableReservation save(TableReservationDTO body){
      //  Desk desk = deskService.findById(body.idDesk());
      //  Game game = gameService.findById(body.idGame());
        User user = userService.findById(body.idUser());
@@ -59,7 +59,27 @@ public class TableReservationService {
       //  newTableReservation.setGame(gameService.findById(body.idGame()));
         return tableReservationRepository.save(newTableReservation);
     }
+*/
 
+    public TableReservation save(TableReservationDTO body){
+        User user = userService.findById(body.idUser());
+
+        List<Desk> desks = new ArrayList<>();
+        body.idDesk().forEach(deskId -> desks.add(deskService.findById(deskId)));
+
+        List<Game> games = new ArrayList<>();
+        body.idGame().forEach(gameId -> games.add(gameService.findById(gameId)));
+
+        TableReservation newTableReservation = new TableReservation();
+        newTableReservation.setId(body.id());
+        newTableReservation.setDate(body.date());
+        newTableReservation.setTime(body.time());
+        newTableReservation.setUser(user);
+        newTableReservation.setDesk(desks);
+        newTableReservation.setGame(games);
+
+        return tableReservationRepository.save(newTableReservation);
+    }
 
     public TableReservation findById(UUID id){
         return tableReservationRepository.findById(id).orElseThrow(()->new NotFoundException(id));
